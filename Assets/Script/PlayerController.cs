@@ -13,25 +13,38 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) == true)
-        {
-            playerRigidbody.AddForce(0f, 0f, speed);
-        }
 
-        if (Input.GetKey(KeyCode.DownArrow) == true)
-        {
-            playerRigidbody.AddForce(0f, 0f, -speed);
-        }
+        float xInput = Input.GetAxis("Horizontal");
+        Debug.Log("xInput: " + xInput);
+        float zInput = Input.GetAxis("Vertical");
+        Debug.Log("zInput: " + zInput);
 
-        if (Input.GetKey(KeyCode.RightArrow) == true)
-        {
-            playerRigidbody.AddForce(speed, 0f, 0f);
-        }
+        float xSpeed = xInput * speed;
+        float zSpeed = zInput * speed;
 
-        if (Input.GetKey(KeyCode.LeftArrow) == true)
-        {
-            playerRigidbody.AddForce(-speed, 0f, 0f);
-        }
+        Vector3 newVelocity = new Vector3(xSpeed, 0f, zSpeed);
+        playerRigidbody.linearVelocity = newVelocity;
+
+        
+        // if (Input.GetKey(KeyCode.UpArrow) == true)
+        // {
+        //     playerRigidbody.AddForce(0f, 0f, speed);
+        // }
+
+        // if (Input.GetKey(KeyCode.DownArrow) == true)
+        // {
+        //     playerRigidbody.AddForce(0f, 0f, -speed);
+        // }
+
+        // if (Input.GetKey(KeyCode.RightArrow) == true)
+        // {
+        //     playerRigidbody.AddForce(speed, 0f, 0f);
+        // }
+
+        // if (Input.GetKey(KeyCode.LeftArrow) == true)
+        // {
+        //     playerRigidbody.AddForce(-speed, 0f, 0f);
+        // }
 
     }
 }
